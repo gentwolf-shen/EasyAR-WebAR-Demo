@@ -9,7 +9,7 @@ header('Content-Type: application/javascript; charset=UTF-8');
 
 // step 1: 获取浏览器上传的图片数据
 $image = getHttpData();
-if (!$image) showError(1, '未发送图片数据');
+if (!$image) showMsg(1, '未发送图片数据');
 
 // step 2: 将图片数据发送云识别服务
 $params = [
