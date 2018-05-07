@@ -203,7 +203,7 @@ const WebAR = function(interval, recognizeUrl) {
 
 };
 
-const webAR = new WebAR(1000, '/recognize.php');
+const webAR = new WebAR(1000, 'recognize.php');
 
 document.querySelector('#openCamera').addEventListener('click', function(){
     const videoSetting = {width: 320, height: 240};
