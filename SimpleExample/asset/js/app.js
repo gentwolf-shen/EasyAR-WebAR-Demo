@@ -99,8 +99,10 @@ const WebAR = function(interval, recognizeUrl) {
                 .then((stream) => {
                     videoElement.srcObject = stream;
                     videoElement.style.display = 'block';
+                    videoElement.onloadedmetadata = function(){
+                        resolve(true);
+                    };
                     videoElement.play();
-                    resolve(true);
                 })
                 .catch((err) => {
                     reject(err);

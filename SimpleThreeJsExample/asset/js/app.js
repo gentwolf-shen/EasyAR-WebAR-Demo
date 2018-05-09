@@ -13,22 +13,20 @@ document.querySelector('#openCamera').addEventListener('click', function(){
             .then((msg) => {
                 // 打开摄像头成功
                 // 将视频铺满全屏(简单处理)
-                window.setTimeout(() => {
-                    let videoWidth = video.offsetWidth;
-                    let videoHeight = video.offsetHeight;
+                let videoWidth = video.offsetWidth;
+                let videoHeight = video.offsetHeight;
 
-                    if (window.innerWidth < window.innerHeight) {
-                        // 竖屏
-                        if (videoHeight < window.innerHeight) {
-                            video.setAttribute('height', window.innerHeight.toString() +'px');
-                        }
-                    }  else {
-                        // 横屏
-                        if (videoWidth < window.innerWidth) {
-                            video.setAttribute('width', window.innerWidth.toString() +'px');
-                        }
+                if (window.innerWidth < window.innerHeight) {
+                    // 竖屏
+                    if (videoHeight < window.innerHeight) {
+                        video.setAttribute('height', window.innerHeight.toString() +'px');
                     }
-                }, 500);
+                }  else {
+                    // 横屏
+                    if (videoWidth < window.innerWidth) {
+                        video.setAttribute('width', window.innerWidth.toString() +'px');
+                    }
+                }
             })
             .catch((err) => {
                 alert(err);
