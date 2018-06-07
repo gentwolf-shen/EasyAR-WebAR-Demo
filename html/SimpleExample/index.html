@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebAR Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="asset/css/default.css" />
+</head>
+<body>
+
+<video id="video" playsinline=""></video>
+
+<div class="footer">
+    <input type="button" value="打开摄像头" id="openCamera" />
+    <select class="none" id="videoDevice"></select>
+    <input class="none" type="button" value="开始识别" id="start" />
+    <input class="none" type="button" value="停止识别" id="stop" />
+</div>
+
+<script type="text/javascript" src="asset/js/adapter.js"></script>
+<script type="text/javascript" src="asset/js/app.js"></script>
+
+</body>
+</html>

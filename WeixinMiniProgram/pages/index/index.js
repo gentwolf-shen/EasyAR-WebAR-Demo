@@ -1,7 +1,0 @@
-Page({
-  data: {
-  },
-
-  onLoad: function () {
-  }
-})

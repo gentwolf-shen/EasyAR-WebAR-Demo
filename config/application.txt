@@ -1,0 +1,10 @@
+{
+    "web": {
+        "port": ":3000"
+    },
+    "cloud": {
+        "key": "<这里是云图库的Cloud Key>",
+        "secret": "<这里是云图库的Cloud Secret>",
+        "url": "http://<这里是云图库的Client-end URL>/search"
+    }
+}

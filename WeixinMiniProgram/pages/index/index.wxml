@@ -1,6 +1,0 @@
-<!--index.wxml-->
-<view class="container">
-
-  <text style="padding:0 20px">因小程序的限制，目前只能使用web-view组件。</text>
-
-</view>
