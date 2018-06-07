@@ -10,10 +10,6 @@ EasyAR 官网地址： https://www.easyar.cn https://www.easyar.com
 QQ群：463096767， 543115898，756218026
 
 
-[EasyAR WebAR零配置运行包](https://github.com/gentwolf-shen/EasyAR-WebAR-Demo/tree/master/Integrate)
-
-
-
 # EasyAR WebAR 集成运行包
 
 ## 一、功能说明
