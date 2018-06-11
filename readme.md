@@ -50,7 +50,7 @@ EasyAR WebAR集成包，可方便与流行的Web服务器集成。
 配置完成后，请重新启动nginx或apache。
 
 
-集成方法如下：
+集成方法如下(域名必须支持HTTPS协议)：
 
 1. 与nginx集成
 
@@ -65,7 +65,7 @@ EasyAR WebAR集成包，可方便与流行的Web服务器集成。
 2. 与apache集成
 
     修改httpd.conf文件，将mod_proxy.so与mod_proxy_http.so前的#符去掉，
-    再修改httpd-vhosts.conf，在你的VirtualHost中增加：
+    再修改httpd-ssl.conf，在你的VirtualHost中增加：
 
     ```    
       ProxyPass /webar/recognize  http://127.0.0.1:3000/webar/recognize
