@@ -25,7 +25,9 @@ if (!$str) showMsg(2, '网络错误');
 
 // step 3: 解析识别结果，返回给浏览器使用
 $obj = json_decode($str);
-if (!$obj || $obj->statusCode != 0) {
+if (!$obj || (isset($obj->status) && $obj->status == 500)) {
+	showMsg(2, '网络错误');
+} else if ($obj->statusCode != 0) {
 	showMsg(3, '未识别到目标');
 } else {
 	showMsg(0, $obj->result->target);
@@ -36,11 +38,40 @@ if (!$obj || $obj->statusCode != 0) {
  * @return string
  */
 function getHttpData() {
+	$image = getPostImage();
+	if (!$image) $image = getPostFile();
+
+	return $image;
+}
+
+/**
+ * WebAR使用
+ * @return bool|string
+ */
+function getPostImage() {
 	$data = @file_get_contents('php://input');
 	if ($data) {
 		$obj = json_decode($data);
 		$data = $obj->image;
 	}
+	return $data;
+}
+
+/**
+ * 微信小程序使用(上传文件处理)
+ * @return string
+ */
+function getPostFile() {
+	$data = '';
+	if (isset($_FILES)) {
+		foreach ($_FILES as $file) {
+			if ($file['error'] == 0) {
+				$data = base64_encode(@file_get_contents($file['tmp_name']));
+				break;
+			}
+		}
+	}
+
 	return $data;
 }
 
