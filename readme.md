@@ -27,6 +27,7 @@ QQ群：463096767， 543115898，756218026
     * 4.3 secret：EasyAR 云识别 Cloud Secret
     * 4.4 url：EasyAR 云识别 Client-end URL
 5. html：HTML、JS等文件目录
+6. backend：后端识别程序示例(C#、Java、PHP等)
 
 ## 三、开发使用
 
