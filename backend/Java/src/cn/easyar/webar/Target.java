@@ -1,5 +1,8 @@
 package cn.easyar.webar;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Target {
     private String targetId;
     private String trackingImage;
