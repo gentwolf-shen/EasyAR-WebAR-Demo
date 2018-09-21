@@ -1,7 +1,6 @@
 import cn.easyar.webar.ResultInfo;
 import cn.easyar.webar.WebAR;
 
-import java.io.IOException;
 
 public class Main {
 
@@ -13,7 +12,7 @@ public class Main {
         WebAR webAR = new WebAR(cloudKey, cloudSecret, cloudUrl);
 
         try {
-            // 图片的base64数据
+            // 图片的base64数据，使用前请更换为你的图片数据
             String image = "/9j/4AAQSkZJRgA";
             ResultInfo info = webAR.recognize(image);
 
@@ -26,7 +25,7 @@ public class Main {
                 System.out.println(info.getResult().getMessage());
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

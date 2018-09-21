@@ -35,7 +35,7 @@ public class WebAR {
     public ResultInfo recognize(String image) throws IOException {
         SortedMap<String, String> params = new TreeMap<>();
         params.put("image", image);
-        params.put("date", this.getUtcDate());
+        params.put("timestamp", String.valueOf(System.currentTimeMillis()));
         params.put("appKey", this.cloudKey);
         params.put("signature", this.getSign(params));
 
@@ -49,13 +49,13 @@ public class WebAR {
         StringBuilder builder = new StringBuilder();
         params.forEach((key, value) -> builder.append(key + value));
 
-        return this.sha1(builder.toString() + this.cloudSecret);
+        return this.sha256(builder.toString() + this.cloudSecret);
     }
 
-    private String sha1(String str) {
+    private String sha256(String str) {
         StringBuilder builder = new StringBuilder();
         try {
-            MessageDigest digest = MessageDigest.getInstance("sha1");
+            MessageDigest digest = MessageDigest.getInstance("sha-256");
             digest.update(str.getBytes());
             byte[] bytes = digest.digest();
 

@@ -22,29 +22,33 @@ namespace cn.easyar.webar {
         public ResultInfo Recognize(string image) {
             SortedDictionary<string, string> param = new SortedDictionary<string, string>();
             param.Add("image", image);
-            param.Add("date", DateTime.UtcNow.ToString("o"));
+            param.Add("timestamp", this.getTimestamp());
             param.Add("appKey", this.cloudKey);
             param.Add("signature", this.getSign(param));
-            
+
             string json = JsonConvert.SerializeObject(param);
             string str = this.send(json);
 
-            ResultInfo resultInfo = JsonConvert.DeserializeObject<ResultInfo>(str);
-            return resultInfo;
+            return JsonConvert.DeserializeObject<ResultInfo>(str);
         }
-        
+
+        private string getTimestamp() {
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0);
+            return Convert.ToInt64(ts.TotalMilliseconds).ToString();
+        }
+
         private string getSign(SortedDictionary<string, string> param) {
             StringBuilder builder = new StringBuilder();
             foreach (KeyValuePair<string, string> item in param) {
                 builder.Append(item.Key + item.Value);
             }
 
-            return this.sha1(builder.ToString() + this.cloudSecret);
+            return this.sha256(builder.ToString() + this.cloudSecret);
         }
 
-        private string sha1(string str) {
-            SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider();
-            byte[] bytes = sha1.ComputeHash(Encoding.UTF8.GetBytes(str));
+        private string sha256(string str) {
+            SHA256CryptoServiceProvider sha256 = new SHA256CryptoServiceProvider();
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(str));
 
             StringBuilder builder = new StringBuilder();
             foreach (byte b in bytes) {

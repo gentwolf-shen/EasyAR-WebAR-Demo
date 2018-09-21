@@ -13,8 +13,7 @@ if (!$image) showMsg(1, '未发送图片数据');
 
 // step 2: 将图片数据发送云识别服务
 $params = array(
-	// GMT/UTC 日期与时间
-	'date' => gmdate('Y-m-d\TH:i:s.123\Z'),
+	'timestamp' => time() * 1000,
 	'appKey' => CLOUDKEY,
 	'image' => $image,
 );
@@ -76,7 +75,7 @@ function getPostFile() {
 }
 
 /**
- * 生成签名，使用sha1加密
+ * 生成签名，使用sha256加密
  * @param $params
  * @param $cloudSecret
  * @return string
@@ -91,7 +90,7 @@ function getSign($params, $cloudSecret) {
 	}
 	$str = implode('', $tmp);
 
-	return sha1($str . $cloudSecret);
+	return hash('sha256', $str . $cloudSecret);
 }
 
 function showMsg($code, $msg) {

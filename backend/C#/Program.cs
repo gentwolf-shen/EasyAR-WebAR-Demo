@@ -11,7 +11,7 @@ namespace WebARDemo {
             WebAR webAR = new WebAR(cloudKey, cloudSecret, cloudUrl);
 
             try {
-                // 图片的base64数据
+                // 图片的base64数据，使用前请更换为你的图片数据
                 string image = "/9j/4AAQSkZJRgA";
                 ResultInfo info = webAR.Recognize(image);
 
