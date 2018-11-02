@@ -26,3 +26,8 @@ String cloudSecret = "<这里是云图库的Cloud Secret>";
 String cloudUrl = "http://<这里是云图库的Client-end URL>/search";
 ```
 
+与
+
+```
+string image = "/9j/4AAQSkZJRgA";
+```
