@@ -129,7 +129,7 @@ class WebAR {
         this.canvasElement.setAttribute('width', window.innerWidth.toString() + 'px');
         this.canvasElement.setAttribute('height', window.innerHeight.toString() + 'px');
         this.canvasContext = this.canvasElement.getContext('2d');
-        document.body.appendChild(this.canvasElement);
+        // document.body.appendChild(this.canvasElement);
     }
     /**
      * 识别

@@ -1,5 +1,5 @@
 //             别间隔时间(毫秒), 识别服务地址
-const webAR = new WebAR(1000, 'https://webar.easyar.cn/webar/recognize.php');
+const webAR = new WebAR(1000, '/webar/recognize');
 // Threejs简单使用类
 const threeHelper = new ThreeHelper();
 // 列出并打开设备上的摄像头
@@ -16,7 +16,7 @@ document.querySelector('#openCamera').addEventListener('click', function () {
             webAR.openCamera(JSON.parse(videoSelect.value));
         };
         // 打开摄像头
-        // 打开后置摄像头参数： {audio: false, video: {facingMode: {exact: environment}}}
+        // 打开后置摄像头参数： {audio: false, video: {facingMode: {exact: 'environment'}}}
         webAR.openCamera(JSON.parse(videoSelect.value))
             .then(msg => {
             console.info(msg);

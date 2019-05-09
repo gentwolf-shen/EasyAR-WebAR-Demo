@@ -14,7 +14,7 @@ document.querySelector('#openCamera').addEventListener('click', function () {
             webAR.openCamera(JSON.parse(videoSelect.value));
         };
         // 打开摄像头
-        // 打开后置摄像头参数： {audio: false, video: {facingMode: {exact: environment}}}
+        // 打开后置摄像头参数： {audio: false, video: {facingMode: {exact: 'environment'}}}
         webAR.openCamera(JSON.parse(videoSelect.value))
             .then(msg => {
             console.info(msg);
