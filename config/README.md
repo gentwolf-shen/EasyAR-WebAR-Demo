@@ -1,0 +1,1 @@
+请将application.txt文件保存为无BOM的UTF-8格式.
