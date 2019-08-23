@@ -82,7 +82,11 @@ public class WebAR {
                 .build();
 
         try (Response response = this.http.newCall(request).execute()) {
-            return response.body().bytes();
+            byte[] bytes = response.body().bytes();
+            if (response.code() == 500) {
+                throw new IOException("Maybe the image data is wrong:\n"+ new String(bytes));
+            }
+            return bytes;
         }
     }
 }
