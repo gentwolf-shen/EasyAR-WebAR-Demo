@@ -16,3 +16,24 @@ body {
     width: 100%;
     text-align: center;
 }
+#scanLine {
+    position: absolute;
+    z-index: 10;
+    margin-top: 20vh;
+    text-align: center;
+    animation: scan 3s infinite linear;
+    -webkit-animation: scan 3s infinite linear;
+}
+
+#scanLine > img {
+    width: 80%;
+}
+
+@keyframes scan {
+    0% {
+        margin-top: 20vh;
+    }
+    100% {
+        margin-top: 80vh;
+    }
+}

@@ -4,28 +4,33 @@
     <meta charset="UTF-8">
     <title>WebAR Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="asset/css/default.css" />
+    <link rel="stylesheet" href="asset/css/default.css"/>
 </head>
 <body>
 
-<div class="footer">
-    <input type="button" value="打开摄像头" id="openCamera" />
-    <select class="none" id="videoDevice"></select>
-    <input class="none" type="button" value="开始识别" id="start" />
-    <input class="none" type="button" value="停止识别" id="stop" />
+<div id="easyAR">
+    <div id="scanLine" class="none">
+        <img src="asset/images/scan-line.png"/>
+    </div>
 </div>
 
-<script type="text/javascript" src="asset/js/adapter.js"></script>
-<script type="text/javascript" src="asset/js/vconsole.min.js"></script>
-<script type="text/javascript" src="asset/js/webar.js"></script>
-<script>
-    (function(){
-        var vConsole = new VConsole();
+<div class="footer">
+    <select id="videoDevice"></select>
+    <input type="button" value="打开/切换摄像头" id="openCamera"/>
+    <input class="none" type="button" value="开始识别" id="start"/>
+    <input class="none" type="button" value="停止识别" id="stop"/>
+</div>
 
-        const now = (new Date()).getTime();
+<script type="text/javascript" src="../src/adapter.js"></script>
+<script type="text/javascript" src="../src/vconsole.min.js"></script>
+<script type="text/javascript" src="../src/webar.js"></script>
+<script type="text/javascript" src="../src/app.js"></script>
+<script>
+    (function () {
+        const vConsole = new VConsole();
 
         const e = document.createElement('script');
-        e.setAttribute('src', `asset/js/app.js?t=${now}`);
+        e.setAttribute('src', `asset/js/app.js?t=${Date.now()}`);
         document.body.appendChild(e);
     })();
 </script>

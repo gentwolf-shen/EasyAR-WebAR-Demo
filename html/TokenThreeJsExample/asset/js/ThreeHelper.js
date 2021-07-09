@@ -8,7 +8,7 @@ class ThreeHelper {
         this.camera.position.set(-30, 30, 25);
         this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.domElement.setAttribute('class', 'mainCanvas');
+        this.renderer.domElement.setAttribute('class', 'easyARCanvas');
         document.body.appendChild(this.renderer.domElement);
         this.clock = new THREE.Clock();
         this.mixers = [];
@@ -30,7 +30,7 @@ class ThreeHelper {
             this.render();
         });
     }
-    loadObject(setting) {
+    loadObject(setting, callback) {
         const loader = new THREE.FBXLoader();
         loader.load(setting.model, (object) => {
             object.scale.setScalar(setting.scale);
@@ -40,6 +40,10 @@ class ThreeHelper {
                 object.mixer = new THREE.AnimationMixer(object);
                 this.mixers.push(object.mixer);
                 object.mixer.clipAction(object.animations[0]).play();
+            }
+        }, (p) => {
+            if (p.loaded) {
+                callback({ loaded: p.loaded, total: p.total });
             }
         });
     }

@@ -18,61 +18,46 @@ QQ群：463096767， 543115898，756218026
 
 ## 二、文件及目录说明
 
-1. EasyAR-WebAR_linux：linux系统程序
-2. EasyAR-WebAR_darwin：Mac OS系统程序
-3. EasyAR-WebAR_windows.exe：windows系统程序
-4. config/application.txt程序配置(JSON格式)
+### 1. EasyAR-WebAR_linux：linux系统程序
+### 2. EasyAR-WebAR_darwin：Mac OS系统程序
+### 3. EasyAR-WebAR_windows.exe：windows系统程序
+### 4. config/application.txt程序配置(JSON格式)
     * 4.1 port：程序监听端口
     * 4.2 key：EasyAR 云识别 Cloud Key
     * 4.3 secret：EasyAR 云识别 Cloud Secret
     * 4.4 url：EasyAR 云识别 Client-end URL
-5. html：HTML、JS等文件目录
-6. backend：后端识别程序示例(C#、Java、PHP等)
+### 5. html：HTML、JS等文件目录
 
 ## 三、开发使用
 
-1. 修改config/application.txt，将你的云识别app、secret及url填入。
-2. 运行EasyAR-WebAR程序，如启动成功，会显示监听的端口号。
+### 1. 修改config/application.txt，将你的云识别app、secret及url填入。
+### 2. 运行EasyAR-WebAR程序，如启动成功，会显示监听的端口号。
     * 2.1 linux系统：
         ./EasyAR-WebAR_linux
     * 2.2 Mac OS系统：
         ./EasyAR-WebAR_darwin
     * 2.3 windows系统：
-        鼠标双击或在cmd中运行：EasyAR-WebAR_windows.exe
-3. 在浏览器(需要摄像头)中输入http://<你的ip>:<端口>/html/<Demo目录>,
-    如：http://127.0.0.1:3000/html/SimpleThreeJsExample
-4. 如果一切顺利，第一个Demo将会呈现在你的浏览器中。
-5. 如果集成包不能运行,请参考后端程序配置运行环境。
+    鼠标双击或在cmd中运行：EasyAR-WebAR_windows.exe
+### 3. 在浏览器(需要摄像头)中输入http://<你的ip>:<端口>/html/<Demo目录>,
+    如：http://127.0.0.1:3000/SimpleThreeJsExample
+    本地调试环境(ip+端口)，建议使用火狐浏览器。
+### 4. 如果一切顺利，第一个Demo将会呈现在你的浏览器中。
+### 5. 如果集成包不能运行,请参考后端程序配置运行环境。
 
 ## 四、集成到生产环境
 
-EasyAR WebAR集成包，可方便与流行的Web服务器集成。
+域名必须支持HTTPS协议：
 
-使用反向代理功能，将浏览器发送的数据转发到EasyAR WebAR程序上。
-配置完成后，请重新启动nginx或apache。
+### 1. 与nginx集成
 
+在nginx配置文件中的server中，添加以下内容：
 
-集成方法如下(域名必须支持HTTPS协议)：
-
-1. 与nginx集成
-
-    在nginx配置文件中的server中，添加以下内容：
-    
-    ``` 
-    location /webar/recognize {
-        proxy_pass   http://127.0.0.1:3000/webar/recognize;
-    }     
-    ```
-
-2. 与apache集成
-
-    修改httpd.conf文件，将mod_proxy.so与mod_proxy_http.so前的#符去掉，
-    再修改httpd-ssl.conf，在你的VirtualHost中增加：
-
-    ```    
-      ProxyPass /webar/recognize  http://127.0.0.1:3000/webar/recognize
-      ProxyPassReverse /webar/recognize  http://127.0.0.1:3000/webar/recognize      
-    ```
+``` 
+location / {
+    index  index.html;
+    proxy_pass   http://127.0.0.1:3000/;
+}     
+```
     
 ## 五、祝一切顺利
 
